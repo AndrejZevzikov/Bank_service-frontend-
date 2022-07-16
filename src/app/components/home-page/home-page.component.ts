@@ -20,6 +20,8 @@ export class HomePageComponent implements OnInit {
     document.getElementById("mainPicture")?.scrollIntoView({ behavior: 'smooth' })
   }
 
+
+
   onLoadMore() {
     this.newsPerPage = this.newsPerPage + 5;
     this.httpClient.get<News[]>(this.apiUrl + "/news/" + this.newsPerPage).subscribe(

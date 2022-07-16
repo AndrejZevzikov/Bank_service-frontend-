@@ -1,8 +1,8 @@
 <div class="mainGif">
     <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_158673029_9707279704500119_78594.jpg"
         alt="none" id="mainPicture">
-    <button type="button" id="signInButton" class="btn btn-light">Sign In</button>
-    <a href="" id="regLink">Register</a>
+    <button type="button" id="signInButton" class="btn btn-light" routerLink="login">Login</button>
+    <a href="" id="regLink" routerLink="register">Register</a>
 </div>
 <div class="container mainPageCard" *ngFor="let news of newsList">
     <div class="cardImg homeCard">
