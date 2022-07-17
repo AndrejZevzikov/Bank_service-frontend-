@@ -1,6 +1,9 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/entities/customer';
+import { AuthUserService } from 'src/app/sevices/auth-user.service';
+import { Observable, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -9,16 +12,46 @@ import { Customer } from 'src/app/entities/customer';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService) { }
 
-  loginInfo: Customer = {}
+  customer: Customer = {}
+  apiUrl: string = "http://localhost:8080/customer"
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.loginInfo);
-    this.router.navigate(["main"]);
+
+    this.httpClient.get(this.apiUrl + "/login?" + this.addParams(), { observe: 'response' }).subscribe(
+      (result) => {
+        console.log(result.headers)
+        let token = result.headers.get("access_token");
+        if (token !=undefined) {
+          this.authUserService.setJwt(token);
+          this.httpClient.get<Customer>(this.apiUrl + "/username=" + this.customer.username).subscribe(
+            (resp) => {
+              if(resp.authority && resp.username){
+              this.authUserService.setRole(resp.authority);
+              this.authUserService.setUsername(resp.username);
+              }
+            }
+          )
+        }
+        this.router.navigate(["main"]);
+      }
+    )
+
+  }
+
+  addParams() {
+    let params = new HttpParams();
+
+    if (this.customer.username && this.customer.password) {
+      params = params.append('username', this.customer.username);
+      params = params.append('password', this.customer.password);
+      return params;
+    }
+    return params;
   }
 
 }

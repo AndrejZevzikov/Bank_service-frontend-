@@ -5,4 +5,5 @@ export interface Customer {
     lastName?:string;
     identityNumber?:string;
     email?:string;
+    authority?:string;
 }

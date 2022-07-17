@@ -20,4 +20,14 @@ export class AuthUserService {
   public getJwt(){
     return localStorage.getItem("jwt");
   }
+  public setUsername(username:string){
+    localStorage.setItem("username",username);
+  }
+  public getUsername(){
+    return localStorage.getItem("username");
+  }
+
+  public clearStorage(){
+    localStorage.clear();
+  }
 }
