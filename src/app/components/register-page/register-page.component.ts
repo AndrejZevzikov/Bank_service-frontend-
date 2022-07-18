@@ -11,7 +11,7 @@ import { Customer } from 'src/app/entities/customer';
 export class RegisterPageComponent implements OnInit {
 
   customer: Customer = {};
-  apiUrl: string = "";
+  apiUrl: string = "http://localhost:8080/customer";
 
   constructor(private router: Router, private httpClient: HttpClient) { }
 
@@ -19,14 +19,15 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSubmit() {
-    this.httpClient.post<Customer>(this.apiUrl, this.customer).subscribe(
+    console.log(this.customer)
+    this.httpClient.post<Customer>(this.apiUrl+"/save", this.customer).subscribe(
       (result) => {
-        this.router.navigate(["/"])
-      },
-      (error) => {
-        alert("Invalid info")
-      }
-
+        this.router.navigate(["/"]).then(
+          nav => {
+            window.alert("New User Successfully added");
+          }
+        )
+      } 
     )
 
 

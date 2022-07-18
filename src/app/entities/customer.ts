@@ -3,7 +3,7 @@ export interface Customer {
     password?:string;
     firstName?:string;
     lastName?:string;
-    identityNumber?:string;
+    identificationNumber?:string;
     email?:string;
     authority?:string;
 }

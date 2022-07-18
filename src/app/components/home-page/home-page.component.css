@@ -8,7 +8,8 @@ max-height: 835px;
     border-style: solid;
     border-radius: 2%;
     margin-top: 1%;
-    min-height: 300px;
+    min-height: 350px;
+    max-height: 400px;
     margin-bottom: 2%;
     box-shadow: 10px 10px 10px 10px #ebd9d9;
 }
@@ -53,12 +54,14 @@ max-height: 835px;
   }
 
   .homeCard{
-    width: 45%;
+    width: 44%;
     display: inline-block;
   }
   .homeCard img{
     max-width: 90%;
-    max-height: 90%;
+    max-height: 350px;
+    min-width: 90%;
+    min-height: 90%;
     padding-top: 1%;
     padding-bottom: 1%;
   }

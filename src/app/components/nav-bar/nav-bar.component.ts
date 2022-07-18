@@ -11,10 +11,14 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router:Router, private authUserService:AuthUserService) { }
 
-  role:string = "";
+  role:any;
 
   ngOnInit(): void {
-    this.role == this.authUserService.getRole();
+    this.role = this.initRole();
+  }
+
+  initRole(){
+    return this.authUserService.getRole();
   }
 
   onLogout(){

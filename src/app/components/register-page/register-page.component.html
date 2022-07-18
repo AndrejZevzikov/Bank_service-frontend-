@@ -1,7 +1,8 @@
 <div class="container registerCard">
     <div class="labelRegistration">
-        <label for=""> Sign in</label>
+        <label for=""> Registration</label>
     </div>
+    <br>
     <div class="registrationForm">
         <form>
             <div class="form-group">
@@ -26,7 +27,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Identity Number</label>
-                <input type="password" name="identityNumber" id = "identityNumber" [(ngModel)] = "customer.identityNumber" class="form-control"  placeholder="Enter Identity Number">
+                <input type="password" name="identityNumber" id = "identityNumber" [(ngModel)] = "customer.identificationNumber" class="form-control"  placeholder="Enter Identity Number">
               </div>
             <button type="submit" (click)="onSubmit()" id="registerButton" class="btn btn-primary">Register</button>
           </form>

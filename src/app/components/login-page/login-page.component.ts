@@ -38,7 +38,11 @@ export class LoginPageComponent implements OnInit {
           )
         }
         this.router.navigate(["main"]);
+      },
+      error =>{
+        alert("Credentials are wrong.")
       }
+    
     )
 
   }
