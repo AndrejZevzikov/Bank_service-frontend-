@@ -15,6 +15,8 @@ export class HomePageComponent implements OnInit {
   apiUrl = "http://localhost:8080"
   newsList: News[] = [];
   newsPerPage = 5;
+  alert: any;
+
 
   scrollToTop() {
     document.getElementById("mainPicture")?.scrollIntoView({ behavior: 'smooth' })
@@ -31,6 +33,20 @@ export class HomePageComponent implements OnInit {
     )
   }
 
+  setAlertTofalse() {
+    setTimeout(() => {
+      this.alert = ""
+      localStorage.removeItem("alert")
+    }, 3000)
+  }
+
+  setTimeBreak(){
+    setTimeout(() => {
+      this.alert = localStorage.getItem("alert");
+    },500)
+  }
+
+
   ngOnInit(): void {
     this.httpClient.get<News[]>(this.apiUrl + "/news/5").subscribe(
       (result) => {
@@ -38,5 +54,7 @@ export class HomePageComponent implements OnInit {
       }
     )
     this.newsPerPage = 5;
+    this.setTimeBreak();
+    this.setAlertTofalse();
   }
 }

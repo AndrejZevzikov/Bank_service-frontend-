@@ -4,6 +4,9 @@
     <button type="button" id="signInButton" class="btn btn-light" routerLink="login">Login</button>
     <a href="" id="regLink" routerLink="register">Register</a>
 </div>
+<div class="alert alert-success myAlert" *ngIf="alert=='show'">
+    <strong>Success!</strong>
+</div>
 <div class="container mainPageCard" *ngFor="let news of newsList">
     <div class="cardImg homeCard">
         <img src={{news.imageLink}} alt="NOT FOUND">
@@ -17,3 +20,4 @@
 <button type="button" class="btn btn-info loadMore" (click)="onLoadMore()">Load More</button>
 
 <button (click)="scrollToTop()" id="myBtn" type="button" title="Go to top">Up</button>
+

@@ -75,3 +75,12 @@ max-height: 835px;
     background-color: aliceblue;
     margin-bottom: 1%;
   }
+
+  .myAlert{
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 1%;
+    position: absolute;
+    z-index: 1000;
+    top: 10px;
+  }
