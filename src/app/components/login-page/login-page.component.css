@@ -20,3 +20,9 @@
 .forgot{
     margin-top: 2px;
 }
+
+.forgotBtn{
+    border: none;
+    background-color: white;
+    color: blue;
+}

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Customer } from 'src/app/entities/customer';
 import { AuthUserService } from 'src/app/sevices/auth-user.service';
 import { Observable, throwError } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../modal/modal.component'; 
 
 @Component({
   selector: 'app-login-page',
@@ -12,12 +14,16 @@ import { Observable, throwError } from 'rxjs';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService,private modalService: NgbModal) { }
 
   customer: Customer = {}
   apiUrl: string = "http://localhost:8080/customer"
 
   ngOnInit(): void {
+  }
+ 
+  openModal() {
+    const modalRef = this.modalService.open(ModalComponent);
   }
 
   onSubmit() {

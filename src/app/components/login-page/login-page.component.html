@@ -13,7 +13,7 @@
               <input type="password" name="password" id = "password" [(ngModel)] = "customer.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
             <div class="forgot">
-                <a href="">Forgot password?</a>
+              <button (click)="openModal()" class="forgotBtn">Forgot Password?</button>
             </div>
             <button type="submit" (click)="onSubmit()" id="loginButton" class="btn btn-primary">Sign In</button>
           </form>
