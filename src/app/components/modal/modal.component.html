@@ -1,0 +1,9 @@
+<div>
+    <form class="myForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Enter your email</label>
+            <input type="email" [(ngModel)]="customer.email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <button type="button" (click)="onSubmit()" class="btn btn-primary myBtn">Send</button>
+    </form>
+</div>

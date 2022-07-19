@@ -1,9 +1,23 @@
 <div class="mainGif">
-    <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_158673029_9707279704500119_78594.jpg" alt="none" id="mainPicture">
-    <button type="button" id="signInButton" class="btn btn-light">Sign In</button>
-    <a href="" id="regLink">Register</a>
+    <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_158673029_9707279704500119_78594.jpg"
+        alt="none" id="mainPicture">
+    <button type="button" id="signInButton" class="btn btn-light" routerLink="login">Login</button>
+    <a href="" id="regLink" routerLink="register">Register</a>
 </div>
-<div class="container mainPageCard">
+<div class="alert alert-success myAlert" *ngIf="alert=='show'">
+    <strong>Success!</strong>
+</div>
+<div class="container mainPageCard" *ngFor="let news of newsList">
+    <div class="cardImg homeCard">
+        <img src={{news.imageLink}} alt="NOT FOUND">
+    </div>
+    <div class="cadText homeCard">
+        <h2>{{news.title}}</h2>
+        <p>{{news.content}}</p>
+        <p class="dateTime">{{news.createDateTime}}</p>
+    </div>
+</div>
+<button type="button" class="btn btn-info loadMore" (click)="onLoadMore()">Load More</button>
 
-</div>
 <button (click)="scrollToTop()" id="myBtn" type="button" title="Go to top">Up</button>
+

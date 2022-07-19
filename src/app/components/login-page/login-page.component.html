@@ -1,0 +1,21 @@
+<div class="container loginCard">
+    <div class="labelLogin">
+        <label for=""> Sign in</label>
+    </div>
+    <div class="loginForm">
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="text" name="username" id="username" [(ngModel)] = "customer.username" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" name="password" id = "password" [(ngModel)] = "customer.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="forgot">
+              <button (click)="openModal()" class="forgotBtn">Forgot Password?</button>
+            </div>
+            <button type="submit" (click)="onSubmit()" id="loginButton" class="btn btn-primary">Sign In</button>
+          </form>
+    </div>
+</div>
