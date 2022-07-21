@@ -85,3 +85,8 @@ max-height: 835px;
     z-index: 1000;
     top: 10px;
   }
+
+  .homePageImage{
+    height: 100vw; 
+    width: 100vw;
+  }

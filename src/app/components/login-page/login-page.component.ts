@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/entities/customer';
@@ -26,39 +26,33 @@ export class LoginPageComponent implements OnInit {
     const modalRef = this.modalService.open(ModalComponent);
   }
 
-  onLogin() { 
+  onLogin() {
 
     this.httpClient.get(this.apiUrl + "/login?" + this.addParams(), { observe: 'response' }).subscribe(
+      
       (result) => {
         console.log(result.headers)
         let token = result.headers.get("access_token");
         if (token != undefined) {
           this.authUserService.setJwt(token);
-          this.httpClient.get<Customer>(this.apiUrl + "/username=" + this.customer.username).subscribe(
+          this.httpClient.get<Customer>(this.apiUrl + "/userWithToken", { headers: new HttpHeaders({ 'access_token': '' + this.authUserService.getJwt() }) }).subscribe(
             (resp) => {
               if (resp.authority && resp.username) {
                 this.authUserService.setRole(resp.authority);
                 this.authUserService.setUsername(resp.username);
-                if (this.authUserService.getRole() == "ADMIN") {
-                  console.log(this.authUserService.getRole())
-                  this.router.navigate(["mainAdmin"]);
-                } else {
-                  console.log(this.authUserService.getRole())
-                  this.router.navigate(["main"]);
-                }
+                console.log(this.authUserService.getRole())
+
+                this.router.navigate(["main"]);
+
               }
             }
           )
         }
-        
-
       },
       error => {
         alert("Credentials are wrong.")
       }
-
     )
-
   }
 
   addParams() {

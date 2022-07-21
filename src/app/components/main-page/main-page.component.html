@@ -1,3 +1,26 @@
 <app-nav-bar></app-nav-bar>
+<p>{{role}}</p>
+<div class="loggedddInMain container">
+    <div class="rates">
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Rates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rate of rates">
+                    <td>{{rate.date}}</td>
+                    <td>{{rate.code}}</td>
+                    <td>{{rate.rate}}</td>
+                </tr>
+            </tbody>
+        </table>
 
-<p>Loged in User</p>
+<div class="updateRateBtn">
+    <button *ngIf="role == 'ADMIN'">Update rates</button>
+</div>
+
+</div>
