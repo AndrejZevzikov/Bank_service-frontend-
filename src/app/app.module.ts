@@ -13,6 +13,11 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMaterialModule } from './ng-material/ng-material.module';
 import { ModalComponent } from './components/modal/modal.component';
+import { UsersPageComponent } from './components/users-page/users-page.component';
+import { MakePaymentComponent } from './components/make-payment/make-payment.component';
+import { HistoryComponent } from './components/history/history.component';
+import { LoansComponent } from './components/loans/loans.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import { ModalComponent } from './components/modal/modal.component';
     MainPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    ModalComponent
+    ModalComponent,
+    UsersPageComponent,
+    MakePaymentComponent,
+    HistoryComponent,
+    LoansComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

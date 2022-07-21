@@ -15,17 +15,30 @@ export class MainPageComponent implements OnInit {
   role:any;
   rates:CurrencyRate[]=[];
   apiUrl:string = "http://localhost:8080/";
+  headers:HttpHeaders = new HttpHeaders({'Authorization': 'Bearer '+this.authUserService.getJwt()});
 
   
 
 
   ngOnInit(): void {
-    let headers:HttpHeaders = new HttpHeaders({'access_token': ''+this.authUserService.getJwt()});
+
     this.role = this.authUserService.getRole();
-    this.httpClient.get<CurrencyRate[]>(this.apiUrl + "currency_rates",{headers:headers}).subscribe(
+    this.httpClient.get<CurrencyRate[]>(this.apiUrl + "currency_rates",{headers:this.headers}).subscribe(
       (result) => {
         this.rates = result;
        
+      }
+    );
+  }
+
+  onUpdateCurrencyRrates(){
+    this.httpClient.get(this.apiUrl + "currency_rates/update",{headers:this.headers}).subscribe(
+      (result) => {
+        this.httpClient.get<CurrencyRate[]>(this.apiUrl + "currency_rates",{headers:this.headers}).subscribe(
+          (result) => {
+            this.rates = result;
+          }
+        );
       }
     );
   }

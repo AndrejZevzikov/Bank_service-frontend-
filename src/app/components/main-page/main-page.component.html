@@ -1,26 +1,56 @@
 <app-nav-bar></app-nav-bar>
 <p>{{role}}</p>
-<div class="loggedddInMain container">
-    <div class="rates">
-        <table class="table table-light">
-            <thead>
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Rates</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let rate of rates">
-                    <td>{{rate.date}}</td>
-                    <td>{{rate.code}}</td>
-                    <td>{{rate.rate}}</td>
-                </tr>
-            </tbody>
-        </table>
-
-<div class="updateRateBtn">
-    <button *ngIf="role == 'ADMIN'">Update rates</button>
-</div>
-
+<div class="card-deck firstRow">
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Rates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rate of rates">
+                                <td>{{rate.date}}</td>
+                                <td>{{rate.code}}</td>
+                                <td>{{rate.rate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-secondary" (click)="onUpdateCurrencyRrates()"
+                    *ngIf="role == 'ADMIN'">Update rates</button>
+            </div>
+        </div>
+    </div>
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Rates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rate of rates">
+                                <td>{{rate.date}}</td>
+                                <td>{{rate.code}}</td>
+                                <td>{{rate.rate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-secondary" (click)="onUpdateCurrencyRrates()"
+                    *ngIf="role == 'ADMIN'">Update rates</button>
+            </div>
+        </div>
+    </div>
 </div>

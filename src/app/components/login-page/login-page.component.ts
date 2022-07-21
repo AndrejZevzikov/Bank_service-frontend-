@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/entities/customer';
@@ -20,6 +20,13 @@ export class LoginPageComponent implements OnInit {
   apiUrl: string = "http://localhost:8080/customer"
 
   ngOnInit(): void {
+    this.httpClient.get(this.apiUrl + "/valid", { headers: new HttpHeaders({'Authorization': 'Bearer '+this.authUserService.getJwt()}), observe:"response" }).subscribe(
+      (resp) => {
+        if(resp.ok){
+          this.router.navigate(["main"]);
+        }
+      })
+  
   }
 
   openModal() {
