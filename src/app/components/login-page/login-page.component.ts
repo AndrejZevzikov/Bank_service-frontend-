@@ -5,7 +5,7 @@ import { Customer } from 'src/app/entities/customer';
 import { AuthUserService } from 'src/app/sevices/auth-user.service';
 import { Observable, throwError } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../modal/modal.component'; 
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-login-page',
@@ -14,41 +14,49 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService,private modalService: NgbModal) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService, private modalService: NgbModal) { }
 
   customer: Customer = {}
   apiUrl: string = "http://localhost:8080/customer"
 
   ngOnInit(): void {
   }
- 
+
   openModal() {
     const modalRef = this.modalService.open(ModalComponent);
   }
 
-  onSubmit() {
+  onLogin() { 
 
     this.httpClient.get(this.apiUrl + "/login?" + this.addParams(), { observe: 'response' }).subscribe(
       (result) => {
         console.log(result.headers)
         let token = result.headers.get("access_token");
-        if (token !=undefined) {
+        if (token != undefined) {
           this.authUserService.setJwt(token);
           this.httpClient.get<Customer>(this.apiUrl + "/username=" + this.customer.username).subscribe(
             (resp) => {
-              if(resp.authority && resp.username){
-              this.authUserService.setRole(resp.authority);
-              this.authUserService.setUsername(resp.username);
+              if (resp.authority && resp.username) {
+                this.authUserService.setRole(resp.authority);
+                this.authUserService.setUsername(resp.username);
+                if (this.authUserService.getRole() == "ADMIN") {
+                  console.log(this.authUserService.getRole())
+                  this.router.navigate(["mainAdmin"]);
+                } else {
+                  console.log(this.authUserService.getRole())
+                  this.router.navigate(["main"]);
+                }
               }
             }
           )
         }
-        this.router.navigate(["main"]);
+        
+
       },
-      error =>{
+      error => {
         alert("Credentials are wrong.")
       }
-    
+
     )
 
   }

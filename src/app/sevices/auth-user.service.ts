@@ -8,6 +8,7 @@ export class AuthUserService {
   constructor() { }
 
   public setRole(role:string){
+    localStorage.removeItem("role");
     localStorage.setItem("role",role);
   }
   public getRole(){

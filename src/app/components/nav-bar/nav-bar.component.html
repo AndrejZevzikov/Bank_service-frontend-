@@ -4,22 +4,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="main">Home</a>
+            <a class="nav-link active" aria-current="page" *ngIf="role != 'ADMIN'" routerLink="main">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Make payment</a>
+            <a class="nav-link active" aria-current="page" *ngIf="role == 'ADMIN'" routerLink="mainAdmin">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">My Loans</a>
+            <a class="nav-link active" aria-current="page" *ngIf="role != 'ADMIN'">Make payment</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">History</a>
+            <a class="nav-link active" aria-current="page" *ngIf="role != 'ADMIN'">My Loans</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Currency rates</a>
+            <a class="nav-link active" aria-current="page" *ngIf="role == 'ADMIN'">Loans</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Loans</a>
+            <a class="nav-link active" aria-current="page" *ngIf="role == 'ADMIN'">History</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" *ngIf="role == 'ADMIN'">Users</a>
