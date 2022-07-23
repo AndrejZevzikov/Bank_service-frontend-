@@ -2,6 +2,9 @@
     <div class="labelLogin">
         <label for=""> Sign in</label>
     </div>
+    <div class="alert alert-success myAlert" *ngIf="alert!=''">
+      <strong>{{alert}}</strong>
+  </div>
     <div class="loginForm">
         <form>
             <div class="form-group">

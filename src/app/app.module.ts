@@ -18,6 +18,7 @@ import { MakePaymentComponent } from './components/make-payment/make-payment.com
 import { HistoryComponent } from './components/history/history.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { RecoveryComponent } from './components/recovery/recovery.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     MakePaymentComponent,
     HistoryComponent,
     LoansComponent,
-    SettingsComponent
+    SettingsComponent,
+    RecoveryComponent
   ],
   imports: [
     BrowserModule,

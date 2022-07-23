@@ -1,4 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthUserService } from 'src/app/sevices/auth-user.service';
 
 @Component({
   selector: 'app-loans',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoansComponent implements OnInit {
 
-  constructor() { }
+  apiUrl: string = "http://localhost:8080/customer"
+
+  constructor(private authUserService: AuthUserService) { }
 
   ngOnInit(): void {
-  }
+    this.authUserService.checkAccesToken();
 
+  }
 }
+

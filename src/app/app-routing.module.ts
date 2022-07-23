@@ -6,6 +6,7 @@ import { LoansComponent } from './components/loans/loans.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { MakePaymentComponent } from './components/make-payment/make-payment.component';
+import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UsersPageComponent } from './components/users-page/users-page.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:"history",component:HistoryComponent},
   {path:"loans",component:LoansComponent},
   {path:"settings",component:SettingsComponent},
-  {path:"register",component:RegisterPageComponent}
+  {path:"register",component:RegisterPageComponent},
+  {path:"recovery",component:RecoveryComponent}
 ];
 
 @NgModule({

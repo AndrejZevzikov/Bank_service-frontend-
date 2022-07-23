@@ -34,16 +34,16 @@
                     <table class="table table-light mainTable">
                         <thead>
                             <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">Rates</th>
+                                <th scope="col">Account Number</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Currency</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let rate of rates">
-                                <td>{{rate.date}}</td>
-                                <td>{{rate.code}}</td>
-                                <td>{{rate.rate}}</td>
+                            <tr *ngFor="let balance of balances">
+                                <td>{{balance.accountNumber}}</td>
+                                <td>{{balance.amount}}</td>
+                                <td>{{balance.currencyCode}}</td>
                             </tr>
                         </tbody>
                     </table>

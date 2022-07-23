@@ -18,14 +18,18 @@ export class LoginPageComponent implements OnInit {
 
   customer: Customer = {}
   apiUrl: string = "http://localhost:8080/customer"
+  alert:any = '';
 
   ngOnInit(): void {
+    
     this.httpClient.get(this.apiUrl + "/valid", { headers: new HttpHeaders({'Authorization': 'Bearer '+this.authUserService.getJwt()}), observe:"response" }).subscribe(
       (resp) => {
         if(resp.ok){
           this.router.navigate(["main"]);
         }
       })
+      this.setTimeBreak();
+      this.setAlertTofalse();
   
   }
 
@@ -71,6 +75,21 @@ export class LoginPageComponent implements OnInit {
       return params;
     }
     return params;
+  }
+
+  setTimeBreak(){
+    setTimeout(() => {
+      if(localStorage.getItem("alert") != null){
+      this.alert = localStorage.getItem("alert");
+      }
+    },500)
+  
+  }
+  setAlertTofalse() {
+    setTimeout(() => {
+      this.alert = ""
+      localStorage.removeItem("alert")
+    }, 3000)
   }
 
 }

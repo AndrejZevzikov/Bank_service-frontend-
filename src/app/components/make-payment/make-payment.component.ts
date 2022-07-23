@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthUserService } from 'src/app/sevices/auth-user.service';
 
 @Component({
   selector: 'app-make-payment',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MakePaymentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authUserService: AuthUserService) { }
 
   ngOnInit(): void {
-  }
+    this.authUserService.checkAccesToken();
 
+  }
 }
