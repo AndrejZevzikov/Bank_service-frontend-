@@ -48,8 +48,10 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary" (click)="onUpdateCurrencyRrates()"
-                    *ngIf="role == 'ADMIN'">Update rates</button>
+                <label for="">Total Amount, EUR: {{totalAmount}}</label>
+            </div>
+            <div>
+                <button type="button" class="btn btn-secondary" (click)="onAddNew()" >Add New</button>
             </div>
         </div>
     </div>

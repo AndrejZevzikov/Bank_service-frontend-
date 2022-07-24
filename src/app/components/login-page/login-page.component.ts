@@ -79,7 +79,7 @@ export class LoginPageComponent implements OnInit {
 
   setTimeBreak(){
     setTimeout(() => {
-      if(localStorage.getItem("alert") != null){
+      if(localStorage.getItem("alert") != null && localStorage.getItem("alert") != "show"){
       this.alert = localStorage.getItem("alert");
       }
     },500)

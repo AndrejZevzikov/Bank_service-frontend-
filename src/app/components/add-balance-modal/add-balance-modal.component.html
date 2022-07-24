@@ -1,0 +1,9 @@
+<div class="currencySelector">
+    <label for="selection" class="myLabel">Select Currency</label>
+    <select class="form-select" aria-label="Default select example" name="selection" id="selection" [(ngModel)] = "selected">
+        <option [ngValue]="currency.id" *ngFor="let currency of currencies">{{currency.code}}</option>
+    </select>
+    <div>
+        <button type="button" class="btn btn-primary myBtn" (click)="onSubmit()">Submit</button>
+    </div>
+</div>

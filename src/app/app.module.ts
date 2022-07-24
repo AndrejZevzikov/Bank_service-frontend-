@@ -19,6 +19,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
+import { AddBalanceModalComponent } from './components/add-balance-modal/add-balance-modal.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { RecoveryComponent } from './components/recovery/recovery.component';
     HistoryComponent,
     LoansComponent,
     SettingsComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    AddBalanceModalComponent
   ],
   imports: [
     BrowserModule,

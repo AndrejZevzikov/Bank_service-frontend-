@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Balance } from 'src/app/entities/balance';
 import { CurrencyRate } from 'src/app/entities/currency-rate';
 import { AuthUserService } from 'src/app/sevices/auth-user.service';
+import { AddBalanceModalComponent } from '../add-balance-modal/add-balance-modal.component';
 
 @Component({
   selector: 'app-main-page',
@@ -11,15 +13,18 @@ import { AuthUserService } from 'src/app/sevices/auth-user.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private authUserService: AuthUserService) { }
+  constructor(private httpClient: HttpClient, private authUserService: AuthUserService, private modalService: NgbModal) { }
 
   role: any;
   rates: CurrencyRate[] = [];
   balances: Balance[] = [];
   apiUrl: string = "http://localhost:8080/";
   headers: HttpHeaders = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authUserService.getJwt() });
+  totalAmount:any;
 
-
+  onAddNew(){
+    const modalRef = this.modalService.open(AddBalanceModalComponent);
+  }
 
 
   ngOnInit(): void {
@@ -33,9 +38,15 @@ export class MainPageComponent implements OnInit {
       }
     );
 
-    this.httpClient.get<Balance[]>(this.apiUrl + "balance/my", { headers: this.headers }).subscribe(
+    this.httpClient.get<Balance[]>(this.apiUrl + "balance", { headers: this.headers }).subscribe(
       (result) => {
         this.balances = result;
+      }
+    );
+
+    this.httpClient.get<any>(this.apiUrl + "customer/total_balance", { headers: this.headers }).subscribe(
+      (result) => {
+        this.totalAmount = result;
       }
     );
   }

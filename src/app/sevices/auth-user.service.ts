@@ -40,7 +40,6 @@ export class AuthUserService {
   public checkAccesToken() {
     this.httpClient.get(this.apiUrl, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.getJwt() }), observe: 'response' }).subscribe(
       (resp) => {
-       
       },
       (error) => {
         localStorage.removeItem("alert");
