@@ -3,11 +3,30 @@
 }
 
 .firstRow{
-    display: flex;
     flex-direction: row;
+    display: flex;
+    margin-bottom: 3%;
+    margin-top: 3%;
 }
 
 .myCard{
     width: 40%;
+    min-width: 40%;
     margin-left: 5%;
+    min-height: 310px;
+    box-shadow: 5px 5px 15px 15px #a4a3a3;
+}
+.secondRow{
+    flex-direction: row;
+    display: flex;
+}
+.myBtn{
+    margin-top: 2%;
+    box-shadow: 1px 1px 1px 1px #474747;
+}
+#totalAmount{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+    margin-top: 1%;
+    
 }

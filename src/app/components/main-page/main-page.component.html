@@ -1,9 +1,9 @@
 <app-nav-bar></app-nav-bar>
-<p>{{role}}</p>
 <div class="card-deck firstRow">
     <div class="card myCard">
         <div class="card-body">
             <div class="rates mainFirstBlock">
+                <h2>Currency Rates</h2>
                 <div>
                     <table class="table table-light mainTable">
                         <thead>
@@ -22,7 +22,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary" (click)="onUpdateCurrencyRrates()"
+                <button type="button" class="btn btn-secondary myBtn" (click)="onUpdateCurrencyRrates()"
                     *ngIf="role == 'ADMIN'">Update rates</button>
             </div>
         </div>
@@ -30,6 +30,7 @@
     <div class="card myCard">
         <div class="card-body">
             <div class="rates mainFirstBlock">
+                <H2>Accounts</H2>
                 <div>
                     <table class="table table-light mainTable">
                         <thead>
@@ -48,11 +49,67 @@
                         </tbody>
                     </table>
                 </div>
-                <label for="">Total Amount, EUR: {{totalAmount}}</label>
+                <label for="" id="totalAmount">Total Amount, EUR: {{totalAmount}}</label>
             </div>
             <div>
-                <button type="button" class="btn btn-secondary" (click)="onAddNew()" >Add New</button>
+                <button type="button" class="btn btn-secondary myBtn" (click)="onAddNew()" >Add New</button>
             </div>
+        </div>
+    </div>
+</div>
+<div class="secondRow">
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <H2>Loans</H2>
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Rates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rate of rates">
+                                <td>{{rate.date}}</td>
+                                <td>{{rate.code}}</td>
+                                <td>{{rate.rate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-secondary myBtn" (click)="onUpdateCurrencyRrates()"
+                    *ngIf="role == 'ADMIN'">New Loan</button>
+            </div>
+        </div>
+    </div>
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <H2>Last 5 Transactions</H2>
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Payer</th>
+                                <th scope="col">Receiver</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Currency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transaction of transactions">
+                                <td>{{transaction.localDate}}</td>
+                                <td>{{transaction.payerAccountNumber}}</td>
+                                <td>{{transaction.receiverAccountNumber}}</td>
+                                <td>{{transaction.amount}}</td>
+                                <td>{{transaction.currencyCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
         </div>
     </div>
 </div>
