@@ -1,2 +1,30 @@
 <app-nav-bar></app-nav-bar>
-<p>loans works!</p>
+<div class="container">
+    <table class="table table-light loanTable">
+        <thead>
+            <tr>
+                <th scope="col">Sign Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Status</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Currency</th>
+                <th scope="col">Schedule</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let loan of loans">
+                <td>{{loan.signDate}}</td>
+                <td>{{loan.type}}</td>
+                <td>{{loan.status}}</td>
+                <td>{{loan.monthToReturn}}</td>
+                <td>{{loan.amount}}</td>
+                <td>{{loan.currencyCode}}</td>
+                <td><button (click)="onPrinterClick(loan.id)"><img class="printer" src="../../../assets/printer.png" alt=""></button></td>
+
+
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
