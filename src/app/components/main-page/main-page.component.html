@@ -66,21 +66,23 @@
                     <table class="table table-light mainTable">
                         <thead>
                             <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">Rates</th>
+                                <th scope="col">Sign Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Duration</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let rate of rates">
-                                <td>{{rate.date}}</td>
-                                <td>{{rate.code}}</td>
-                                <td>{{rate.rate}}</td>
+                            <tr *ngFor="let loan of loans">
+                                <td>{{loan.signDate}}</td>
+                                <td>{{loan.type}}</td>
+                                <td>{{loan.status}}</td>
+                                <td>{{loan.monthToReturn}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary myBtn" (click)="onUpdateCurrencyRrates()"
+                <button type="button" class="btn btn-secondary myBtn" routerLink="/loans"
                     *ngIf="role == 'ADMIN'">New Loan</button>
             </div>
         </div>
@@ -110,6 +112,10 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <button type="button" class="btn btn-secondary myBtn" routerLink="/history"
+                    *ngIf="role == 'ADMIN'">Show all</button>
+            </div>
         </div>
     </div>
 </div>

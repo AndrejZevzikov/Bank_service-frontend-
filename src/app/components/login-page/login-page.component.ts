@@ -48,9 +48,10 @@ export class LoginPageComponent implements OnInit {
           this.authUserService.setJwt(token);
           this.httpClient.get<Customer>(this.apiUrl + "/userWithToken", { headers: new HttpHeaders({ 'access_token': '' + this.authUserService.getJwt() }) }).subscribe(
             (resp) => {
-              if (resp.authority && resp.username) {
+              if (resp.authority && resp.username && resp.identificationNumber) {
                 this.authUserService.setRole(resp.authority);
                 this.authUserService.setUsername(resp.username);
+                this.authUserService.setIdentityNumber(resp.identificationNumber);
                 console.log(this.authUserService.getRole())
 
                 this.router.navigate(["main"]);

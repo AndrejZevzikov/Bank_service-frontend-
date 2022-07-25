@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Balance } from 'src/app/entities/balance';
 import { CurrencyRate } from 'src/app/entities/currency-rate';
+import { Loan } from 'src/app/entities/loan';
 import { Transaction } from 'src/app/entities/transaction';
 import { AuthUserService } from 'src/app/sevices/auth-user.service';
 import { AddBalanceModalComponent } from '../add-balance-modal/add-balance-modal.component';
@@ -20,6 +21,7 @@ export class MainPageComponent implements OnInit {
   rates: CurrencyRate[] = [];
   balances: Balance[] = [];
   transactions:Transaction[]=[];
+  loans:Loan[] = [];
   apiUrl: string = "http://localhost:8080/";
   headers: HttpHeaders = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authUserService.getJwt() });
   totalAmount: any;
@@ -37,10 +39,16 @@ export class MainPageComponent implements OnInit {
     this.getBalances();
     this.getTotalBalance();
     this.getTransactions();
-
+    this.getLoans();
   }
 
-
+getLoans(){
+  this.httpClient.get<Loan[]>("http://localhost:8081/" + "loans" , { headers: this.headers }).subscribe(
+    (result) => {
+     this.loans = result;
+    }
+  );
+}
 
 
 

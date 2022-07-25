@@ -33,12 +33,21 @@ export class AuthUserService {
     return localStorage.getItem("username");
   }
 
+  public setIdentityNumber(identityNumber:string){
+    localStorage.setItem("idNumber",identityNumber);
+  }
+
+  public getIdentityNumber(){
+    return localStorage.getItem("idNumber");
+  }
+
   public clearStorage() {
     localStorage.clear();
   }
 
   public checkAccesToken() {
-    this.httpClient.get(this.apiUrl, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.getJwt() }), observe: 'response' }).subscribe(
+    console.log(this.getJwt());
+    this.httpClient.get(this.apiUrl, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.getJwt()}), observe: 'response' }).subscribe(
       (resp) => {
       },
       (error) => {
