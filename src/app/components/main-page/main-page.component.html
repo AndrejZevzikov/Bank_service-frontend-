@@ -52,7 +52,7 @@
                 <label for="" id="totalAmount">Total Amount, EUR: {{totalAmount}}</label>
             </div>
             <div>
-                <button type="button" class="btn btn-secondary myBtn" (click)="onAddNew()" >Add New</button>
+                <button type="button" class="btn btn-secondary myBtn" (click)="onAddNew()">Show All</button>
             </div>
         </div>
     </div>
@@ -82,8 +82,8 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary myBtn" routerLink="/loans"
-                    *ngIf="role == 'ADMIN'">New Loan</button>
+                <button type="button" class="btn btn-secondary myBtn" routerLink="/loans" *ngIf="role == 'ADMIN'">Show
+                    All</button>
             </div>
         </div>
     </div>
@@ -113,8 +113,10 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary myBtn" routerLink="/history"
-                    *ngIf="role == 'ADMIN'">Show all</button>
+                <button type="button" class="btn btn-secondary myBtn" routerLink="/history" *ngIf="role == 'ADMIN'">Show
+                    all</button>
+                <button type="button" class="btn btn-secondary myBtn" routerLink="/make_payment"
+                    *ngIf="role == 'CLIENT'">Make Payment</button>
             </div>
         </div>
     </div>

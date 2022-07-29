@@ -33,13 +33,13 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.authUserService.checkAccesToken();
-
+    this.getLoans();
     this.role = this.authUserService.getRole();
     this.getCurrencyRates();
     this.getBalances();
     this.getTotalBalance();
     this.getTransactions();
-    this.getLoans();
+    
   }
 
 getLoans(){

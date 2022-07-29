@@ -42,7 +42,6 @@ export class LoginPageComponent implements OnInit {
     this.httpClient.get(this.apiUrl + "/login?" + this.addParams(), { observe: 'response' }).subscribe(
       
       (result) => {
-        console.log(result.headers)
         let token = result.headers.get("access_token");
         if (token != undefined) {
           this.authUserService.setJwt(token);
