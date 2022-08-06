@@ -1,9 +1,10 @@
 <div class="currencySelector">
     <label for="selection" class="myLabel">Select Currency</label>
+    <p *ngIf="errorMessage != ''" class="errorMsg">{{errorMessage}}</p>
     <select class="form-select" aria-label="Default select example" name="selection" id="selection" [(ngModel)] = "selected">
         <option [ngValue]="currency.id" *ngFor="let currency of currencies">{{currency.code}}</option>
     </select>
     <div>
-        <button type="button" class="btn btn-primary myBtn" (click)="onSubmit()">Submit</button>
+        <button type="button" class="myBtn" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
     </div>
 </div>

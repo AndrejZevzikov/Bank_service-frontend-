@@ -22,8 +22,10 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary myBtn" (click)="onUpdateCurrencyRrates()"
+                <button mat-raised-button color="primary" (click)="onUpdateCurrencyRrates()"
                     *ngIf="role == 'ADMIN'">Update rates</button>
+                    <button mat-raised-button color="primary" (click) = "openChartModal()"
+                    *ngIf="role == 'CLIENT'">Show graph</button>
             </div>
         </div>
     </div>
@@ -52,7 +54,7 @@
                 <label for="" id="totalAmount">Total Amount, EUR: {{totalAmount}}</label>
             </div>
             <div>
-                <button type="button" class="btn btn-secondary myBtn" (click)="onAddNew()">Show All</button>
+                <button mat-raised-button color="primary" (click)="onAddNew()">Add new</button>
             </div>
         </div>
     </div>
@@ -82,7 +84,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary myBtn" routerLink="/loans" *ngIf="role == 'ADMIN'">Show
+                <button mat-raised-button color="primary" routerLink="/loans" >Show
                     All</button>
             </div>
         </div>
@@ -113,9 +115,9 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary myBtn" routerLink="/history" *ngIf="role == 'ADMIN'">Show
+                <button mat-raised-button color="primary" routerLink="/make_payment" *ngIf="role == 'ADMIN'">Show
                     all</button>
-                <button type="button" class="btn btn-secondary myBtn" routerLink="/make_payment"
+                <button  mat-raised-button color="primary" class="myBtn" (click) = "openPaymentModal()"
                     *ngIf="role == 'CLIENT'">Make Payment</button>
             </div>
         </div>

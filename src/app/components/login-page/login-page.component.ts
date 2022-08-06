@@ -45,7 +45,7 @@ export class LoginPageComponent implements OnInit {
         let token = result.headers.get("access_token");
         if (token != undefined) {
           this.authUserService.setJwt(token);
-          this.httpClient.get<Customer>(this.apiUrl + "/userWithToken", { headers: new HttpHeaders({ 'access_token': '' + this.authUserService.getJwt() }) }).subscribe(
+          this.httpClient.get<Customer>(this.apiUrl + "/userWithToken", { headers: new HttpHeaders({ 'access_token': 'Bearer ' + this.authUserService.getJwt() }) }).subscribe(
             (resp) => {
               if (resp.authority && resp.username && resp.identificationNumber) {
                 this.authUserService.setRole(resp.authority);

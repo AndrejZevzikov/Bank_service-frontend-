@@ -9,7 +9,9 @@
                 <th scope="col">Duration</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Currency</th>
+                <th scope="col">Percentage</th>
                 <th scope="col">Schedule</th>
+                <th scope="col">Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +22,9 @@
                 <td>{{loan.monthToReturn}}</td>
                 <td>{{loan.amount}}</td>
                 <td>{{loan.currencyCode}}</td>
-                <td><button (click)="onPrinterClick(loan.id)"><img class="printer" src="../../../assets/printer.png" alt=""></button></td>
+                <td>{{loan.percentage}}</td>
+                <td><button (click)="onPrinterClick(loan.id)" mat-raised-button color="primary">PDF</button></td>
+                <td><button (click)="onEdit(loan.id)" mat-raised-button color="primary">Edit</button></td>
 
 
                 

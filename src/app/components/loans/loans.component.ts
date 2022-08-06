@@ -15,7 +15,7 @@ export class LoansComponent implements OnInit {
   apiUrl: string = "http://localhost:8080/customer";
   apiLoanUrl: string = "http://localhost:8081/loans";
 
-  constructor(private authUserService: AuthUserService, private httpClient: HttpClient) { }
+  constructor(private authUserService: AuthUserService, private httpClient: HttpClient, private router:Router) { }
   headers: HttpHeaders = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authUserService.getJwt() });
   loans: Loan[] = [];
 
@@ -33,10 +33,10 @@ export class LoansComponent implements OnInit {
       observe: 'events',
       responseType: 'blob'
     }).subscribe(
-      event =>{
-        if(event.type == HttpEventType.Response){
+      event => {
+        if (event.type == HttpEventType.Response) {
           saveAs(new File([event.body!], "file", //event.headers.get('File-Name')!, 
-                  {type: `${event.headers.get('Content-Type')};charset=utf-8`}));
+            { type: `${event.headers.get('Content-Type')};charset=utf-8` }));
         }
       }
     );
@@ -48,6 +48,10 @@ export class LoansComponent implements OnInit {
         this.loans = result;
       }
     );
+  }
+
+  onEdit(id: any) {
+    this.router.navigate(["/loan_edit/"+id]);
   }
 }
 

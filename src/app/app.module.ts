@@ -15,16 +15,20 @@ import { NgMaterialModule } from './ng-material/ng-material.module';
 import { ModalComponent } from './components/modal/modal.component';
 import { UsersPageComponent } from './components/users-page/users-page.component';
 import { MakePaymentComponent } from './components/make-payment/make-payment.component';
-import { HistoryComponent } from './components/history/history.component';
 import { LoansComponent } from './components/loans/loans.component';
-import { SettingsComponent } from './components/settings/settings.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { AddBalanceModalComponent } from './components/add-balance-modal/add-balance-modal.component';
+import { LoanEditComponent } from './components/loan-edit/loan-edit.component';
+import { PaymentFormComponent } from './components/payment-form/payment-form.component';
+import { ChartModalComponent } from './components/chart-modal/chart-modal.component';
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    CanvasJSChart,
     HomePageComponent,
     NavBarComponent,
     MainPageComponent,
@@ -33,11 +37,12 @@ import { AddBalanceModalComponent } from './components/add-balance-modal/add-bal
     ModalComponent,
     UsersPageComponent,
     MakePaymentComponent,
-    HistoryComponent,
     LoansComponent,
-    SettingsComponent,
     RecoveryComponent,
-    AddBalanceModalComponent
+    AddBalanceModalComponent,
+    LoanEditComponent,
+    PaymentFormComponent,
+    ChartModalComponent
   ],
   imports: [
     BrowserModule,

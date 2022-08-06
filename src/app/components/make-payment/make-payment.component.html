@@ -1,2 +1,28 @@
 <app-nav-bar></app-nav-bar>
-<p>make-payment works!</p>
+    
+<div class="container">
+    <button mat-raised-button color="primary" class="myBtn" (click)="openPaymentModal()"
+    *ngIf="role == 'CLIENT'">Make Payment</button> 
+</div>
+
+<table class="table table-light usersTable container">
+    <thead>
+        <tr>
+            <th scope="col">Payer</th>
+            <th scope="col">Receiver</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Pay Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of transactions">
+            <td>{{transaction.payerAccountNumber}}</td>
+            <td>{{transaction.receiverAccountNumber}}</td>
+            <td>{{transaction.amount}}</td>
+            <td>{{transaction.currencyCode}}</td>
+            <td>{{transaction.localDate}}</td>
+        </tr>
+    </tbody>
+</table>

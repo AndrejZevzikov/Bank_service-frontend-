@@ -1,28 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary myNav">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary myBar" color="primary">
+    <div class="container-fluid myBar" style="border-color: blue;">
       <a class="navbar-brand" href="">BANK</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/main">Home</a>
+            <a class="nav-link active myBar" aria-current="page" routerLink="/main">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" *ngIf="role != 'ADMIN'" routerLink="/make_payment">Make payment</a>
+          <li class="nav-item myBar">
+            <a class="nav-link active" aria-current="page" *ngIf="role != 'ADMIN'" routerLink="/make_payment">Payments</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page"  routerLink="/loans">Loans</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/history">History</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" aria-current="page" *ngIf="role == 'ADMIN'" routerLink="/users">Users</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" *ngIf="role == 'ADMIN'" routerLink="/settings">Settings</a>
-          </li>
         </ul>
-        <button type="button" (click)="onLogout()" class="btn btn-danger logoutBtn">Logout</button>
+        <button type="button" (click)="onLogout()" mat-raised-button color="warn">Logout</button>
       </div>
     </div>
   </nav>

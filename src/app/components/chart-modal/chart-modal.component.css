@@ -1,0 +1,15 @@
+.chart{
+    position: fixed;
+    top: 10%;
+    left: 28%;
+    z-index: 1050;
+    margin-left: -10%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: blue;
+}
+.chart:hover{
+    border-width: 1px;
+    border-style: solid;
+    border-color: red;
+}

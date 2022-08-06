@@ -17,6 +17,7 @@ export class AddBalanceModalComponent implements OnInit {
   currencies:Currency[]=[];
   selected:any;
   headers: HttpHeaders = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authUserService.getJwt()});
+  errorMessage:string = "";
 
 
   ngOnInit(): void {
@@ -30,10 +31,13 @@ export class AddBalanceModalComponent implements OnInit {
   }
 
   onSubmit(){
-    this.httpClient.post(this.apiUrl + "balance/add/" + this.selected,{}, { headers: this.headers }).subscribe(
+    this.httpClient.post<any>(this.apiUrl + "balance/add/" + this.selected,{}, { headers: this.headers }).subscribe(
       (result) => {
         this.activeModal.close();
         location.reload();
+          },
+          (error) =>{
+            this.errorMessage = "this currency alreadyd exists"
           }
         );
       }

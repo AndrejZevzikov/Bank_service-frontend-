@@ -1,10 +1,13 @@
 <app-nav-bar></app-nav-bar>
 <div class="container">
+    <div class="alert alert-success myAlert" *ngIf="alert!=''">
+        <strong>{{alert}}</strong>
+    </div>
 
     <div class="searchRow">
             <input class="form-control mr-sm-2 userNav" [(ngModel)]="searchField" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 userNav" type="submit" (click)="onSearch()" >Search</button>
-            <button type="button" class="btn btn-primary" id="createBtn">Create</button>
+            <button class="userNav myBtn" mat-flat-button color="primary" type="submit" (click)="onSearch()">Search</button>
+            <button type="button"  mat-flat-button color="primary" id="createBtn" (click)="notDoneYet()">Create</button>
     </div>
     
 
@@ -30,8 +33,8 @@
                 <td>{{user.email}}</td>
                 <td>{{user.identificationNumber}}</td>
                 <td>{{user.authority}}</td>
-                <td>Edit</td>
-                <td>Remove</td>
+                <td><button mat-raised-button color="primary" (click)="notDoneYet()">Edit</button></td>
+                <td><button mat-raised-button color="warn" (click)="onDelete(user.id, user.authority)">Remove</button></td>
             </tr>
         </tbody>
     </table>

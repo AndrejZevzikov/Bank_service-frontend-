@@ -7,5 +7,12 @@
 .printer{
     width: 50px;
     border: none;
+    min-height: 25px;
+}
 
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
 }

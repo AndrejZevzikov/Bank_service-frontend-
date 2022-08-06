@@ -7,6 +7,9 @@ import { Loan } from 'src/app/entities/loan';
 import { Transaction } from 'src/app/entities/transaction';
 import { AuthUserService } from 'src/app/sevices/auth-user.service';
 import { AddBalanceModalComponent } from '../add-balance-modal/add-balance-modal.component';
+import {MatButtonModule} from '@angular/material/button';
+import { PaymentFormComponent } from '../payment-form/payment-form.component';
+import { ChartModalComponent } from '../chart-modal/chart-modal.component';
 
 @Component({
   selector: 'app-main-page',
@@ -23,7 +26,7 @@ export class MainPageComponent implements OnInit {
   transactions:Transaction[]=[];
   loans:Loan[] = [];
   apiUrl: string = "http://localhost:8080/";
-  headers: HttpHeaders = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authUserService.getJwt() });
+  headers: HttpHeaders = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authUserService.getJwt()});
   totalAmount: any;
 
   onAddNew() {
@@ -92,6 +95,13 @@ getLoans(){
         this.getTotalBalance();
       }
     );
+  }
+  openPaymentModal() {
+    const modalRef = this.modalService.open(PaymentFormComponent);
+  }
+
+  openChartModal() {
+    const modalRef = this.modalService.open(ChartModalComponent);
   }
 }
 
