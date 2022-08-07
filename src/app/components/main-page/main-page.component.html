@@ -1,3 +1,125 @@
 <app-nav-bar></app-nav-bar>
-
-<p>Loged in User</p>
+<div class="card-deck firstRow">
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <h2>Currency Rates</h2>
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Rates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rate of rates">
+                                <td>{{rate.date}}</td>
+                                <td>{{rate.code}}</td>
+                                <td>{{rate.rate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button mat-raised-button color="primary" (click)="onUpdateCurrencyRrates()"
+                    *ngIf="role == 'ADMIN'">Update rates</button>
+                    <button mat-raised-button color="primary" (click) = "openChartModal()"
+                    *ngIf="role == 'CLIENT'">Show graph</button>
+            </div>
+        </div>
+    </div>
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <H2>Accounts</H2>
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Account Number</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Currency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let balance of balances">
+                                <td>{{balance.accountNumber}}</td>
+                                <td>{{balance.amount}}</td>
+                                <td>{{balance.currencyCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <label for="" id="totalAmount">Total Amount, EUR: {{totalAmount}}</label>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" (click)="onAddNew()">Add new</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="secondRow">
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <H2>Loans</H2>
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sign Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let loan of loans">
+                                <td>{{loan.signDate}}</td>
+                                <td>{{loan.type}}</td>
+                                <td>{{loan.status}}</td>
+                                <td>{{loan.monthToReturn}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button mat-raised-button color="primary" routerLink="/loans" >Show
+                    All</button>
+            </div>
+        </div>
+    </div>
+    <div class="card myCard">
+        <div class="card-body">
+            <div class="rates mainFirstBlock">
+                <H2>Last 5 Transactions</H2>
+                <div>
+                    <table class="table table-light mainTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Payer</th>
+                                <th scope="col">Receiver</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Currency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transaction of transactions">
+                                <td>{{transaction.localDate}}</td>
+                                <td>{{transaction.payerAccountNumber}}</td>
+                                <td>{{transaction.receiverAccountNumber}}</td>
+                                <td>{{transaction.amount}}</td>
+                                <td>{{transaction.currencyCode}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button mat-raised-button color="primary" routerLink="/make_payment" *ngIf="role == 'ADMIN'">Show
+                    all</button>
+                <button  mat-raised-button color="primary" class="myBtn" (click) = "openPaymentModal()"
+                    *ngIf="role == 'CLIENT'">Make Payment</button>
+            </div>
+        </div>
+    </div>
+</div>

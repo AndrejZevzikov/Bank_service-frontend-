@@ -1,0 +1,46 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container myLoanEditForm">
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Id</label>
+        <input type="text" class="form-control" placeholder="id" [(ngModel)]="loan.id" name="loanId">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="selection" class="myLabel">Select Type</label>
+        <select class="form-select" aria-label="Default select example" name="selectionType" id="selection" 
+          [(ngModel)]="loan.type">
+          <option [ngValue]="type" *ngFor="let type of types">{{type}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="selection" class="myLabel">Select Status</label>
+        <select class="form-select" aria-label="Default select example" name="selectionStatus" id="selection" 
+          [(ngModel)]="loan.status">
+          <option [ngValue]="status" *ngFor="let status of statuses">{{status}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Sign Date</label>
+        <input type="text" class="form-control" placeholder="Sign date" [(ngModel)]="loan.signDate" name="loanSignDate">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Months to return</label>
+        <input type="text" class="form-control" placeholder="Months to return" [(ngModel)]="loan.monthToReturn"
+          name="loanMonth">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Amount</label>
+        <input type="text" class="form-control" placeholder="Amount"  [(ngModel)]="loan.amount"
+          name="amount">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Percentage</label>
+        <input type="text" class="form-control" placeholder="Amount"  [(ngModel)]="loan.percentage"
+          name="percentage">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary updateBtn" mat-raised-button color="primary" (click)="onUpdate()">Update</button>
+  </form>
+</div>

@@ -18,7 +18,7 @@
 }
 
 .forgot{
-    margin-top: 2px;
+    margin-top: 5px;
 }
 
 .forgotBtn{
@@ -26,3 +26,11 @@
     background-color: white;
     color: blue;
 }
+
+.myAlert{
+    width: 35%;
+    margin-top: 1%;
+    position: absolute;
+    z-index: 1000;
+    top: 10px;
+  }

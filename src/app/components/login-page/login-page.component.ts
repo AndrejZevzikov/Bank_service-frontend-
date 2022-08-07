@@ -1,11 +1,11 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/entities/customer';
 import { AuthUserService } from 'src/app/sevices/auth-user.service';
 import { Observable, throwError } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../modal/modal.component'; 
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-login-page',
@@ -14,43 +14,56 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService,private modalService: NgbModal) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authUserService: AuthUserService, private modalService: NgbModal) { }
 
   customer: Customer = {}
   apiUrl: string = "http://localhost:8080/customer"
+  alert:any = '';
 
   ngOnInit(): void {
+    
+    this.httpClient.get(this.apiUrl + "/valid", { headers: new HttpHeaders({'Authorization': 'Bearer '+this.authUserService.getJwt()}), observe:"response" }).subscribe(
+      (resp) => {
+        if(resp.ok){
+          this.router.navigate(["main"]);
+        }
+      })
+      this.setTimeBreak();
+      this.setAlertTofalse();
+  
   }
- 
+
   openModal() {
     const modalRef = this.modalService.open(ModalComponent);
   }
 
-  onSubmit() {
+  onLogin() {
 
     this.httpClient.get(this.apiUrl + "/login?" + this.addParams(), { observe: 'response' }).subscribe(
+      
       (result) => {
-        console.log(result.headers)
         let token = result.headers.get("access_token");
-        if (token !=undefined) {
+        if (token != undefined) {
           this.authUserService.setJwt(token);
-          this.httpClient.get<Customer>(this.apiUrl + "/username=" + this.customer.username).subscribe(
+          this.httpClient.get<Customer>(this.apiUrl + "/userWithToken", { headers: new HttpHeaders({ 'access_token': 'Bearer ' + this.authUserService.getJwt() }) }).subscribe(
             (resp) => {
-              if(resp.authority && resp.username){
-              this.authUserService.setRole(resp.authority);
-              this.authUserService.setUsername(resp.username);
+              if (resp.authority && resp.username && resp.identificationNumber) {
+                this.authUserService.setRole(resp.authority);
+                this.authUserService.setUsername(resp.username);
+                this.authUserService.setIdentityNumber(resp.identificationNumber);
+                console.log(this.authUserService.getRole())
+
+                this.router.navigate(["main"]);
+
               }
             }
           )
         }
-        this.router.navigate(["main"]);
       },
-      error =>{
+      error => {
         alert("Credentials are wrong.")
       }
-    
     )
-
   }
 
   addParams() {
@@ -62,6 +75,21 @@ export class LoginPageComponent implements OnInit {
       return params;
     }
     return params;
+  }
+
+  setTimeBreak(){
+    setTimeout(() => {
+      if(localStorage.getItem("alert") != null && localStorage.getItem("alert") != "show"){
+      this.alert = localStorage.getItem("alert");
+      }
+    },500)
+  
+  }
+  setAlertTofalse() {
+    setTimeout(() => {
+      this.alert = ""
+      localStorage.removeItem("alert")
+    }, 3000)
   }
 
 }

@@ -1,0 +1,28 @@
+<form action="" class="myForm">
+<div class="alert" *ngIf="alert !=''">{{alert}}</div>
+    <div class="payForm">
+        <label for="selection" class="myLabel">Select Acount</label>
+        <select class="form-select" aria-label="Default select example" name="selection" id="selection" [(ngModel)]="payment.payerAccountNumber" >
+            <option [ngValue]="balance.accountNumber" *ngFor="let balance of balances">{{balance.accountNumber + "
+                (balance: " + balance.amount+" " +
+                balance.currencyCode+")"}}</option>
+        </select>
+    </div>
+    <div class="form-group payForm">
+        <label for="receiverAccount">Receiver Account</label>
+        <input type="text" name="receiverAccount" id="receiverAccount" class="form-control" [(ngModel)]="payment.receiverAccountNumber"
+            placeholder="Enter receiver account number">
+    </div>
+    <div class="form-group payForm">
+        <label for="amount">Amount</label>
+        <input type="number" name="amount" id="amount" class="form-control" [(ngModel)]="payment.amount"
+            placeholder="Enter amount">
+    </div>
+    <div class="form-group payForm">
+        <label for="comment">Discription</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3" [(ngModel)]="payment.comment"></textarea>
+    </div>
+    <div>
+        <button type="button" (click)="onPay()" class="myBtn" mat-raised-button color="primary">Pay</button>
+    </div>
+</form>

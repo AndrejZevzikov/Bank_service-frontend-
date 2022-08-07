@@ -1,0 +1,41 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="alert alert-success myAlert" *ngIf="alert!=''">
+        <strong>{{alert}}</strong>
+    </div>
+
+    <div class="searchRow">
+            <input class="form-control mr-sm-2 userNav" [(ngModel)]="searchField" type="search" placeholder="Search" aria-label="Search">
+            <button class="userNav myBtn" mat-flat-button color="primary" type="submit" (click)="onSearch()">Search</button>
+            <button type="button"  mat-flat-button color="primary" id="createBtn" (click)="notDoneYet()">Create</button>
+    </div>
+    
+
+
+    <table class="table table-light usersTable">
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">email</th>
+                <th scope="col">Personal ID</th>
+                <th scope="col">Authority</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.username}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.identificationNumber}}</td>
+                <td>{{user.authority}}</td>
+                <td><button mat-raised-button color="primary" (click)="notDoneYet()">Edit</button></td>
+                <td><button mat-raised-button color="warn" (click)="onDelete(user.id, user.authority)">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
